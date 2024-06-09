@@ -3,7 +3,6 @@ import {HttpClient, HttpClientModule, HttpHeaders} from '@angular/common/http';
 import {Router} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {NgIf} from "@angular/common";
-import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-login',
@@ -27,8 +26,7 @@ export class LoginComponent implements OnInit {
     .set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient,
-              private router: Router,
-              private cookieService: CookieService
+              private router: Router
   ) {
   }
 

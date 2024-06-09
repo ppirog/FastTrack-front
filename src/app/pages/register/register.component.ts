@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {HttpClient, HttpClientModule, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {CookieService} from "ngx-cookie-service";
 import {NgIf} from "@angular/common";
 
 @Component({
@@ -19,8 +18,8 @@ import {NgIf} from "@angular/common";
 export class RegisterComponent {
 
   registerObj: any = {
-    username: "user",
-    password: "somePassword"
+    username: "",
+    password: ""
   };
 
   url = 'http://localhost:8080';
@@ -30,8 +29,7 @@ export class RegisterComponent {
 
   constructor(
     private http: HttpClient,
-    private router: Router,
-    private cookieService: CookieService
+    private router: Router
   ) {
   }
 
