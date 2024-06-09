@@ -6,9 +6,9 @@
       <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png" alt="illustration" class="illustration" />
       <h1 class="opacity">REGISTER </h1>
       <form >
-        <input type="text" placeholder="USERNAME" />
-        <input type="password" placeholder="PASSWORD" />
-        <button (click)="onLogin()" class="opacity">REGISTER</button>
+        <input [(ngModel)]="registerObj.username" type="text" name="username" placeholder="username" />
+        <input [(ngModel)]="registerObj.password" type="password" name="password" placeholder="password" />
+        <button (click)="onRegister()" class="opacity">REGISTER</button>
         <button (click)="goBackToLogin()" class="opacity">BACK</button>
       </form>
     </div>

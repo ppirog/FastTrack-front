@@ -16,14 +16,15 @@ import {CookieService} from "ngx-cookie-service";
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
 
   loginObj: any = {
     username: "",
     password: ""
   };
-
-  headerText: string = 'LOGIN';
+  url = 'http://localhost:8080';
+  headers = new HttpHeaders()
+    .set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient,
               private router: Router,
@@ -36,7 +37,22 @@ export class LoginComponent implements OnInit{
   }
 
   onLogin() {
+    this.http.post(this.url + '/login', this.loginObj, {headers: this.headers}).subscribe(
+      (response: any) => {
+        if ('token' in response && response.token) {
+          sessionStorage.setItem('token', response.token)
+          console.log('Token:', response.token);
 
+          alert('Zalogowano pomyślnie!');
+          this.router.navigate(['/dashboard']);
+        } else {
+          console.error('Błąd token:', response);
+        }
+      },
+      (tokenError) => {
+        console.error('Błąd login:', tokenError);
+      }
+    );
   }
 
   goToRegister() {

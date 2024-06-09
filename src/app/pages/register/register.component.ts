@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {Component} from '@angular/core';
+import {FormsModule} from "@angular/forms";
+import {HttpClient, HttpClientModule, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {CookieService} from "ngx-cookie-service";
 import {NgIf} from "@angular/common";
@@ -17,28 +17,38 @@ import {NgIf} from "@angular/common";
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+
   registerObj: any = {
-    username: "someUser",
-    password: "somePassword"
-  };
-  loginObj: any = {
-    username: "someUser",
+    username: "user",
     password: "somePassword"
   };
 
-  headerText: string = 'LOGIN';
+  url = 'http://localhost:8080';
+
+  headers = new HttpHeaders()
+    .set('Content-Type', 'application/json');
+
   constructor(
     private http: HttpClient,
     private router: Router,
     private cookieService: CookieService
   ) {
   }
+
   goBackToLogin() {
     console.log('Register Component:');
     this.router.navigate(['/login']);
   }
 
-  onLogin() {
+  onRegister() {
 
+    this.http.post(this.url + '/register', this.registerObj, {headers: this.headers}).subscribe(
+      (response) => {
+        console.log('Udane rejestracji:', response);
+      },
+      (error) => {
+        console.error('Błąd rejestracji:', error);
+      }
+    );
   }
 }
