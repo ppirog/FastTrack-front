@@ -1,1 +1,15 @@
-<p>company works!</p>
+<div class="center-content">
+  <h2 class="title" style="margin-left: 0">Find By KRS</h2>
+  <form style="font-size: 25px" (ngSubmit)="findCompanyClick()">
+    <input type="text" id="companyId" name="companyId" [(ngModel)]="companyKrs" placeholder="Enter KRS number">
+    <button type="submit">Submit</button>
+  </form>
+  <div *ngIf="loading">Ładowanie...</div>
+  <div *ngIf="error">{{ error }}</div>
+  <div *ngIf="company" class="company-list">
+    <h3>ID: {{ company?.id }}</h3>
+    <p>Name: {{ company?.name }}</p>
+    <p>Legal Form: {{ company?.legalForm }}</p>
+    <p>KRS Number: {{ company?.KRSnumber }}</p>
+  </div>
+</div>
