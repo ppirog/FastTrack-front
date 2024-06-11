@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
         if ('token' in response && response.token) {
           sessionStorage.setItem('token', response.token)
           console.log('Token:', response.token);
-
           alert('Zalogowano pomyślnie!');
           this.router.navigate(['/dashboard']);
         } else {
