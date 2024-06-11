@@ -11,7 +11,7 @@ describe('FinancialDataComponent', () => {
       imports: [FinancialDataComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(FinancialDataComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

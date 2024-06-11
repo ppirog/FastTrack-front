@@ -1,1 +1,56 @@
-<p>financial-data works!</p>
+<div class="center-content">
+  <h2 class="title" style="margin-left: 0">Financial Data</h2>
+  <form style="font-size: 25px" (ngSubmit)="findFinancialData()">
+    <input type="text" id="companyKrs" name="companyKrs" [(ngModel)]="companyKrs" placeholder="Enter KRS number">
+    <button type="submit">Submit</button>
+  </form>
+  <div *ngIf="loading">Ładowanie...</div>
+  <div *ngIf="error">{{ error }}</div>
+  <div *ngIf="financialData" class="financial-data">
+    <h3>Company: {{ financialData.companyName }}</h3>
+    <p>KRS Number: {{ financialData.krsNumber }}</p>
+    <p>Fetch Date: {{ financialData.fetchDate }}</p>
+
+    <ng-container *ngIf="financialData.netSalesValues.length > 0">
+      <h4>Net Sales Values</h4>
+      <ul>
+        <li *ngFor="let value of financialData.netSalesValues">{{ value }}</li>
+      </ul>
+    </ng-container>
+
+    <ng-container *ngIf="financialData.ebitdaValues.length > 0">
+      <h4>EBITDA Values</h4>
+      <ul>
+        <li *ngFor="let value of financialData.ebitdaValues">{{ value }}</li>
+      </ul>
+    </ng-container>
+
+    <ng-container *ngIf="financialData.netProfitOrLossValues.length > 0">
+      <h4>Net Profit Or Loss Values</h4>
+      <ul>
+        <li *ngFor="let value of financialData.netProfitOrLossValues">{{ value }}</li>
+      </ul>
+    </ng-container>
+
+    <ng-container *ngIf="financialData.liabilitesAndProvisionsValues.length > 0">
+      <h4>Liabilities and Provisions Values</h4>
+      <ul>
+        <li *ngFor="let value of financialData.liabilitesAndProvisionsValues">{{ value }}</li>
+      </ul>
+    </ng-container>
+
+    <ng-container *ngIf="financialData.equityValues.length > 0">
+      <h4>Equity Values</h4>
+      <ul>
+        <li *ngFor="let value of financialData.equityValues">{{ value }}</li>
+      </ul>
+    </ng-container>
+
+    <ng-container *ngIf="financialData.totalAssetsValues.length > 0">
+      <h4>Total Assets Values</h4>
+      <ul>
+        <li *ngFor="let value of financialData.totalAssetsValues">{{ value }}</li>
+      </ul>
+    </ng-container>
+  </div>
+</div>
