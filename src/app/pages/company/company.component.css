@@ -1,17 +1,15 @@
-/* Korzystanie z zmiennych CSS dla spójności z resztą aplikacji */
 :root {
   --background: #395ba8;
   --color: #ffffff;
   --primary-color: #0f3460;
 }
 
-/* Globalne style */
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "poppins";
+  font-family: "poppins", serif;
   background: var(--background);
   color: var(--color);
   margin: 0;

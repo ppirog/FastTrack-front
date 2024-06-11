@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {HttpClient, HttpClientModule, HttpHeaders} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {CommonModule, NgIf} from '@angular/common';
-import {FinancialData} from '../FinancialData.interface';
+import {FinancialData} from '../financialData.interface';
 
 @Component({
   selector: 'app-financial-data',
@@ -22,7 +22,9 @@ export class FinancialDataComponent {
   loading: boolean = false;
   error: string | null = null;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient
+  ) {
   }
 
   findFinancialData() {

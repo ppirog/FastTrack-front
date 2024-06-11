@@ -9,7 +9,7 @@
 }
 
 body {
-  font-family: "poppins";
+  font-family: "poppins", serif;
   background: var(--background);
   color: var(--color);
   margin: 0;

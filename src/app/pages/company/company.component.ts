@@ -2,8 +2,6 @@ import {Component} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {Company} from "../company.interface";
 import {HttpClient, HttpClientModule, HttpHeaders} from "@angular/common/http";
-import {Router} from "@angular/router";
-import {CookieService} from "ngx-cookie-service";
 import {NgIf} from "@angular/common";
 
 @Component({
@@ -25,9 +23,7 @@ export class CompanyComponent {
   error: string = '';
 
   constructor(
-    private http: HttpClient,
-    private router: Router,
-    private cookieService: CookieService
+    private http: HttpClient
   ) {
   }
 
