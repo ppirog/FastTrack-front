@@ -4,6 +4,11 @@ Backend to this app: https://github.com/ppirog/FastTrack
 # Livedemo
 https://youtu.be/B7XfYUlUSR0
 
+# Showcase of application
+![image](https://github.com/ppirog/FastTrack/assets/126290295/428efadd-612a-4418-bc3e-6050eaf387a2)
+![image](https://github.com/ppirog/FastTrack/assets/126290295/95173934-8ddd-42ab-8b37-e710b6f1dece)
+![image](https://github.com/ppirog/FastTrack/assets/126290295/c5524fda-8b84-4770-afa7-f8fe4fdc71ac)
+
 # FastTrackFront
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.4.
