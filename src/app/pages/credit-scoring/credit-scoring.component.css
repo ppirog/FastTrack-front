@@ -1,0 +1,139 @@
+:root {
+  --background: #395ba8;
+  --color: #ffffff;
+  --primary-color: #0f3460;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "poppins", serif;
+  background: var(--background);
+  color: var(--color);
+  margin: 0;
+  letter-spacing: 1px;
+  transition: background 0.2s ease;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin: auto;
+  max-width: 600px;
+  border: 1px solid hsla(0, 0%, 65%, 0.158);
+  border-radius: 10px;
+  box-shadow: 0 0 36px 1px rgba(0, 0, 0, 0.2);
+  background-color: rgba(133, 72, 72, 0.1);
+  backdrop-filter: blur(20px);
+}
+
+.title {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: var(--color);
+}
+
+form {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 14.5px;
+  margin: 10px 0;
+  color: var(--color);
+  outline: none;
+  background-color: rgba(145, 145, 145, 0.12);
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  font-size: 1em;
+  backdrop-filter: blur(15px);
+}
+
+input[type="text"]:focus {
+  box-shadow: 0 0 16px 1px rgba(0, 0, 0, 0.2);
+  animation: wobble 0.3s ease-in;
+}
+
+button[type="submit"] {
+  padding: 13px;
+  background-color: var(--primary-color);
+  color: var(--color);
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.15);
+  transform: scale(1.02);
+}
+
+div[ngIf="loading"], div[ngIf="error"] {
+  font-size: 1.2em;
+  color: #ff0000;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.company-info {
+  width: 100%;
+  background-color: rgba(230, 215, 215, 0.5);
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.company-info h3, .company-info h4 {
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.company-info p {
+  margin: 5px 0;
+  font-size: 1.5em;
+  color: var(--color);
+}
+
+.company-info ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.company-info ul li {
+  margin: 5px 0;
+  color: var(--color);
+}
+.score {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+@keyframes wobble {
+  0% {
+    transform: scale(1.025);
+  }
+  25% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.025);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

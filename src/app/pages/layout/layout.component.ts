@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {RouterOutlet} from "@angular/router";
+import {Router, RouterOutlet} from "@angular/router";
 
 @Component({
   selector: 'app-layout',
@@ -11,5 +11,13 @@ import {RouterOutlet} from "@angular/router";
   styleUrl: './layout.component.css'
 })
 export class LayoutComponent {
+  constructor(private router: Router) {}
 
+  logout() {
+    // Usunięcie tokena z sessionStorage
+    sessionStorage.removeItem('token');
+
+    // Opcjonalne przekierowanie do strony logowania
+    this.router.navigate(['/login']);
+  }
 }

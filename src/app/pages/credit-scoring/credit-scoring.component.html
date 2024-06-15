@@ -1,0 +1,22 @@
+<div class="center-content">
+  <h2 class="title" style="margin-left: 0">Credit Scoring</h2>
+  <form (ngSubmit)="fetchCompanyData()" style="font-size: 25px">
+    <input [(ngModel)]="companyKrs" id="krsNumber" name="krsNumber" placeholder="Enter KRS number" required type="text">
+    <button type="submit">Submit</button>
+  </form>
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="error">{{ error }}</div>
+  <div *ngIf="creditReport" class="company-info">
+    <h3>KRS Number: {{ creditReport.krsNumber }}</h3>
+    <p>Name: {{ creditReport.comapnyName }}</p>
+    <p [ngStyle]="
+    {'color': getScoreColor(Number(creditReport.percentageScore))}" class="score">
+      Credit Score: {{ creditReport.percentageScore }}%
+    </p>
+    <h4>Descriptions:</h4>
+    <ul *ngIf="creditReport.descriptions && creditReport.descriptions.length > 0">
+      <li *ngFor="let description of creditReport.descriptions">{{ description }}</li>
+    </ul>
+    <p *ngIf="creditReport.descriptions && creditReport.descriptions.length === 0">No descriptions available.</p>
+  </div>
+</div>
