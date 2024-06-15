@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient, HttpClientModule, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpClientModule, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Router} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {NgIf} from "@angular/common";
+import {catchError, throwError} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -35,7 +36,16 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    this.http.post(this.url + '/login', this.loginObj, {headers: this.headers}).subscribe(
+    this.http.post(this.url + '/login', this.loginObj, {headers: this.headers})
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          if (error.status === 401) {
+            alert('Błedne Dane');
+          }
+          return throwError(error);
+        })
+      )
+      .subscribe(
       (response: any) => {
         if ('token' in response && response.token) {
           sessionStorage.setItem('token', response.token)

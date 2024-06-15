@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
 import {FormsModule} from "@angular/forms";
-import {HttpClient, HttpClientModule, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpClientModule, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {NgIf} from "@angular/common";
+import {catchError, throwError} from "rxjs";
 
 @Component({
   selector: 'app-register',
@@ -40,9 +41,19 @@ export class RegisterComponent {
 
   onRegister() {
 
-    this.http.post(this.url + '/register', this.registerObj, {headers: this.headers}).subscribe(
+    this.http.post(this.url + '/register', this.registerObj, {headers: this.headers})
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          if (error.status === 409) {
+            alert('Podany login już istnieje. Wybierz inny login.');
+          }
+          return throwError(error);
+        })
+      )
+      .subscribe(
       (response) => {
         console.log('Udane rejestracji:', response);
+        alert('Zarejestrowano');
       },
       (error) => {
         console.error('Błąd rejestracji:', error);
